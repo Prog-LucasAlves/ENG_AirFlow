@@ -1,0 +1,1 @@
+COPY {{ params.table }} (id, code, codein, name, high, low, varbid, pctchange, bid, ask, create_date) FROM '/var/transfer/moedas_unicos.csv'  WITH DELIMITER AS ';' CSV HEADER
