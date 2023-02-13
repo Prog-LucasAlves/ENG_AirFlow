@@ -13,9 +13,13 @@ ENG - Airflow
 2. airflow(postgres-airflow_dw) -> Postegres(BD -> moedas_dw): user: etl_airflow_dw | password: P@ssword21
 3. power_bi() -> Postegres(BD - moedas_dw): user: etl_powerbi_dw | P@ssword21
 
+## ![CI](https://cdn-icons-png.flaticon.com/24/6577/6577286.png) Github
+
 ![GitHub](https://img.shields.io/github/license/Prog-LucasAlves/ENG-Airflow)
+![GitHub](https://img.shields.io/github/languages/top/Prog-LucasAlves/ENG-AirFlow)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Prog-LucasAlves/ENG-AirFlow)
 
 ## ![P](https://cdn-icons-png.flaticon.com/24/8422/8422251.png) Pacotes Python utilizados
 
 [![Pandas](https://badge.fury.io/py/pandas.svg)](https://badge.fury.io/py/pandas)
-[![PyPI version](https://badge.fury.io/py/Airflow.svg)](https://badge.fury.io/py/Airflow)
+[![Airflow](https://badge.fury.io/py/apache-airflow.svg)](https://badge.fury.io/py/apache-airflow)
