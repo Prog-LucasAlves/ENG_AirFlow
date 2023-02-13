@@ -6,13 +6,13 @@ Coletando dados de uma API e fazendo a ingestão dos dados em um Banco de Dados.
 
 ## ![Informações do Projeto](https://cdn-icons-png.flaticon.com/24/8365/8365039.png) Informações do Projeto
 
-API Utilizada: [https://docs.awesomeapi.com.br/api-de-moedas]
-Banco de Dados*: **Postgres 13** (Via Docker - postgres:13)
-Airflow: **Airflow 2.5.1** (Via Docker - apache/airflow:2.5.1)
+1. API Utilizada: [https://docs.awesomeapi.com.br/api-de-moedas]
+2. Banco de Dados*: **Postgres 13** (Via Docker - postgres:13)
+3. Airflow: **Airflow 2.5.1** (Via Docker - apache/airflow:2.5.1)
 
-*Foi Criado dois banco de dados*
-*1. moedas_dl(DataLake) -> Schema(pares_moedas)*
-*2. moedas_dw(DataWarehouse) ->Schema(pares_moedas)*
+- *Foi Criado dois banco de dados*
+- *1. moedas_dl(DataLake) -> Schema(pares_moedas)*
+- *2. moedas_dw(DataWarehouse) ->Schema(pares_moedas)*
 
 -Conexões usuários:
 
