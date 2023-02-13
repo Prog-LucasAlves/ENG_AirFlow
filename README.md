@@ -1,10 +1,10 @@
-# [Projeto AirFlow](https://cdn-icons-png.flaticon.com/24/4907/4907848.png) Projeto AirFlow
+# ![Projeto AirFlow](https://cdn-icons-png.flaticon.com/24/4907/4907848.png) Projeto AirFlow
 
 Coletando dados de uma API e fazendo a ingestão dos dados em um Banco de Dados.
 
 ![ ](https://github.com/Prog-LucasAlves/ENG-AirFlow/blob/main/image/Captura%20de%20tela%202023-02-13%20101542.png)
 
-## [Informações do Projeto](https://cdn-icons-png.flaticon.com/24/8365/8365039.png) Informações do Projeto
+## ![Informações do Projeto](https://cdn-icons-png.flaticon.com/24/8365/8365039.png) Informações do Projeto
 
 API Utilizada: [https://docs.awesomeapi.com.br/api-de-moedas]
 Banco de Dados*: **Postgres 13** (Via Docker - postgres:13)
