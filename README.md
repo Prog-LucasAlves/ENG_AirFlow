@@ -22,8 +22,10 @@ Coletando dados de uma API e fazendo a ingestão dos dados em um Banco de Dados.
 ## ![Planejamento](https://cdn-icons-png.flaticon.com/24/5341/5341024.png) Planejamento
 
 - [x] Coletar os dados da API
-- [x] Salvar os dados no DataLake
-- [x] Limpeza e Transformação dos dados
+    - [x] Data Quality
+- [x] Salvando os dados no Datalake
+- [x] Filtrando os dados salvos no Datalake
+- [x] Salvando os dados no Datawarehouse
 
 ## ![CI](https://cdn-icons-png.flaticon.com/24/6577/6577286.png) Github
 
