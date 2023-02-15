@@ -107,4 +107,17 @@ with DAG(
     """
     )
 
-    extract_task >> transform_task >> load_task
+    reload_task = PythonOperator(
+        task_id="reload",
+        python_callable=load,
+    )
+    load_task.doc_md = dedent(
+        """\
+    #### Load task
+    A simple Load task which takes in the result of the Transform task, by reading it
+    from xcom and instead of saving it to end user review, just prints it out.
+    """
+    )
+
+    extract_task >> transform_task >> [load_task, reload_task] 
+    extract_task >> reload_task
