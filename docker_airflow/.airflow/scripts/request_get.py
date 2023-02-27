@@ -62,8 +62,6 @@ def captura_dados() -> list:
     dadosColetados['ask'] = result_ask
     dadosColetados['create_date'] = create_date
     dadosColetados.to_csv('/var/transfer/dadosColetados.csv', index=False)
-        
-    return list(result_code), list(result_codein), list(result_name), list(result_high), list(result_low), list(result_varBid), list(result_pctChange), list(result_bid), list(result_ask)
 
 if __name__ == '__main__':
     captura_dados()

@@ -21,11 +21,12 @@ Coletando dados de uma API e fazendo a ingestão dos dados em um Banco de Dados.
 
 ## ![Planejamento](https://cdn-icons-png.flaticon.com/24/5341/5341024.png) Planejamento
 
-- [x] Coletar os dados da API
-- [ ] Data Quality (Em construção)
-- [x] Salvando os dados no Datalake
-- [x] Filtrando os dados salvos no Datalake
-- [x] Salvando os dados no Datawarehouse
+- [x] Coletar os dados da API (Em Produção)
+- [ ] Data Quality (Em Desenvolvimento)
+- [x] Salvando os dados no Datalake (Em Produção)
+- [x] Filtrando os dados salvos no Datalake (Em Produção)
+- [x] Salvando os dados no Datawarehouse (Em Produção)
+- [ ] Criando aplicação em flask ou fastapi com os dados (Em Estudo)
 
 ## ![CI](https://cdn-icons-png.flaticon.com/24/6577/6577286.png) Github
 
@@ -37,5 +38,7 @@ Coletando dados de uma API e fazendo a ingestão dos dados em um Banco de Dados.
 
 [![Pandas](https://badge.fury.io/py/pandas.svg)](https://badge.fury.io/py/pandas)
 [![Airflow](https://badge.fury.io/py/apache-airflow.svg)](https://badge.fury.io/py/apache-airflow)
+
+![progress](https://progress-bar.dev/60/?title=completed "progresso")
 
 ENG - Airflow

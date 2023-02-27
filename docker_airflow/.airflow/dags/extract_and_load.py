@@ -1,6 +1,5 @@
 from airflow import DAG
 from airflow.providers.postgres.operators.postgres import PostgresOperator
-from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
 from airflow.providers.common.sql.operators.sql import SQLColumnCheckOperator, SQLTableCheckOperator
 from airflow.models.baseoperator import chain
 from airflow.operators.python import PythonOperator
@@ -9,15 +8,18 @@ from airflow.utils.task_group import TaskGroup
 from airflow.models import Variable
 
 from scripts.request_get import captura_dados
+from scripts.transformeted import transforma
 
 from datetime import datetime, timedelta
 
+PATH_DATA_DL = Variable.get('PATH_DATA_DL')
+PATH_DATA_DW = Variable.get('PATH_DATA_DW')
 POSTGRES_TABLE = Variable.get('POSTGRES_TABLE')
 POSTGRES_CONN_DL = Variable.get('POSTGRES_CONN_DL')
 POSTGRES_CONN_DW = Variable.get('POSTGRES_CONN_DW')
 
 with DAG(
-    'dag_executa_etl_sql',
+    'EXTRACT_AND_LOAD',
     default_args={
         "depends_on_past": False,
         "up_for_retry": 2,
@@ -35,6 +37,11 @@ with DAG(
         python_callable = captura_dados
     )
 
+    transforma_dados = PythonOperator(
+        task_id = 'transforma_dados',
+        python_callable = transforma
+    )
+
     criar_tabela_dl = PostgresOperator(
         task_id = 'cria_tabela_dl',
         postgres_conn_id = POSTGRES_CONN_DL,
@@ -46,30 +53,33 @@ with DAG(
         task_id = 'insere_dados_dl',
         postgres_conn_id = POSTGRES_CONN_DL,
         sql = 'inseri_dados_tabela_dl.sql',
-        params = {'table': POSTGRES_TABLE}
+        params = {'table': POSTGRES_TABLE,
+                'path': PATH_DATA_DL}
     )
-    with TaskGroup(group_id='check', default_args={"conn_id": POSTGRES_CONN_DL}) as quality_check:
+    with TaskGroup(group_id='check_dl', default_args={"conn_id": POSTGRES_CONN_DL}) as quality_check_dl:
 
         table_checks_dl = SQLTableCheckOperator(
-            task_id = 'table_checks',
+            task_id = 'table_checks_dl',
             table =  POSTGRES_TABLE,
             checks = {
                 "code_diff_codein": {"check_statement": "code != codein"},
                 "row_count_check": {"check_statement": "COUNT(*) > 0"},
                 "high_diff_low": {"check_statement": "high >= low"},
-                "code_": {"check_statement": "COUNT(DISTINCT(code)) = 14"},
-                "codein_": {"check_statement": "COUNT(DISTINCT(codein)) = 2"},
-                "name_": {"check_statement": "COUNT(DISTINCT(name)) = 15"},
+                "code_distinct": {"check_statement": "COUNT(DISTINCT(code)) = 14"},
+                "codein_distinct": {"check_statement": "COUNT(DISTINCT(codein)) = 2"},
+                "name_distinct": {"check_statement": "COUNT(DISTINCT(name)) = 15"},
+                "high_greater": {"check_statement": "high > 0"}
             },
         )
 
         columns_checks_dl = SQLColumnCheckOperator(
-            task_id = 'columns_checks',
+            task_id = 'columns_checks_dl',
             table = POSTGRES_TABLE,
             column_mapping = {
                 "ID": {"unique_check": {"equal_to": 0}, "null_check": {"equal_to": 0}},
                 "code": {"null_check": {"equal_to": 0}},
-                "create_date": {"null_check": {"equal_to": 0}}
+                "create_date": {"null_check": {"equal_to": 0}},
+                
                 }
         )
 
@@ -112,8 +122,31 @@ with DAG(
         task_id = 'insere_dados_dw',
         postgres_conn_id = POSTGRES_CONN_DW,
         sql = 'inseri_dados_tabela_dw.sql',
-        params = {'table': POSTGRES_TABLE}
+        params = {'table': POSTGRES_TABLE,
+                'path': PATH_DATA_DW}
     )
+    with TaskGroup(group_id='check_dw', default_args={"conn_id": POSTGRES_CONN_DW}) as quality_check_dw:
+        
+        table_checks_dw = SQLTableCheckOperator(
+            task_id = 'table_check_dw',
+            table = POSTGRES_TABLE,
+            checks = {
+                "code_diff_codein": {"check_statement": "code != codein"},
+                "row_count_check": {"check_statement": "COUNT(*) > 0"},
+                "high_diff_low": {"check_statement": "high >= low"},
+                "code_": {"check_statement": "COUNT(DISTINCT(code)) = 14"},
+                "codein_": {"check_statement": "COUNT(DISTINCT(codein)) = 2"},
+                "name_": {"check_statement": "COUNT(DISTINCT(name)) = 15"},
+            },
+        )
+
+        columns_checks_dw = SQLColumnCheckOperator(
+            task_id = 'columns_checks_dw',
+            table = POSTGRES_TABLE,
+            column_mapping = {
+                "ID": {"unique_check": {"equal_to": 0}, "null_check": {"equal_to": 0}},
+            }
+        )
 
     begin = EmptyOperator(task_id='begin')
     end = EmptyOperator(task_id='end')
@@ -121,15 +154,17 @@ with DAG(
     chain(
         begin,
         coleta_dados,
+        transforma_dados,
         criar_tabela_dl,
         inseri_dados_tabela_dl,
-        quality_check,
+        quality_check_dl,
         deleta_dados_duplicados_tabela_dl,
         query_backup_dl,
         select_ultimos_dados_inseridos_dl,
         criar_tabela_dw,
         deleta_dados_tabela_dw,
         inseri_dados_tabela_dw,
+        quality_check_dw,
         end
     )
 
@@ -138,7 +173,7 @@ with DAG(
 # TODO: Segurança -> Criar usuários ✅
 # TODO: Criar script sql para pegar o ultimo dado de cada par de moeda e inserir no DW ✅
 # TODO: Criar insert.sql com os dados a serem inseridos ✅
-# TODO: Enviroment nomes de tabelas, conexões
+# TODO: Enviroment nomes de tabelas, conexões ✅
+# TODO: Transformando dados coletados ✅
+# TODO: Data Quality (Tabela e Colunas)
 # TODO: Criar script sql separando em arquivos csv por par de moeda
-
-# D:\Prjts\AirFlow\dags\scripts

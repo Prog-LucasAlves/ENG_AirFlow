@@ -13,6 +13,7 @@ x-common:
     - .airflow/plugins:/opt/airflow/plugins
     - .airflow/scripts:/opt/airflow/scripts
     - .airflow/sql:/opt/airflow/sql
+    - .airflow/files:/opt/airflow/files
     - /var/run/docker.sock:/var/run/docker.sock
     - .postgres/transfer:/var/transfer:rw
 
