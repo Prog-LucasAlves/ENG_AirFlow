@@ -26,7 +26,8 @@ Coletando dados de uma API e fazendo a ingestão dos dados em um Banco de Dados.
 - [x] Salvando os dados no Datalake (Em Produção)
 - [x] Filtrando os dados salvos no Datalake (Em Produção)
 - [x] Salvando os dados no Datawarehouse (Em Produção)
-- [ ] Criando aplicação em flask ou fastapi com os dados (Em Estudo)
+- [x] Conectando o PowerBI no Datawarehouse - Dashboard (Em Produção)
+- [ ] Criando aplicação em flask com os dados (Em Desenvolvimento)
 
 ## ![CI](https://cdn-icons-png.flaticon.com/24/6577/6577286.png) Github
 

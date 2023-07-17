@@ -62,14 +62,25 @@ with DAG(
             task_id = 'table_checks_dl',
             table =  POSTGRES_TABLE,
             checks = {
-                "code_diff_codein": {"check_statement": "code != codein"},
                 "row_count_check": {"check_statement": "COUNT(*) > 0"},
+                "code_distinct": {"check_statement": "COUNT(DISTINCT(code)) = 14",
+                                  "partition_clause": "code IS NOT NULL"},
+                "codein_distinct": {"check_statement": "COUNT(DISTINCT(codein)) = 2",
+                                    "partition_clause": "codein IS NOT NULL"},
+                "name_distinct": {"check_statement": "COUNT(DISTINCT(name)) = 15",
+                                  "partition_clause": "name IS NOT NULL"},
+                "code_diff_codein": {"check_statement": "code != codein"},
+                "high_greater": {"check_statement": "high > 0",
+                                 "partition_clause": "high IS NOT NULL"},
+                "low_greater": {"check_statement": "low > 0",
+                                "partition_clause": "low IS NOT NULL"},
                 "high_diff_low": {"check_statement": "high >= low"},
-                "code_distinct": {"check_statement": "COUNT(DISTINCT(code)) = 14"},
-                "codein_distinct": {"check_statement": "COUNT(DISTINCT(codein)) = 2"},
-                "name_distinct": {"check_statement": "COUNT(DISTINCT(name)) = 15"},
-                "high_greater": {"check_statement": "high > 0"}
-            },
+                "ask_greater": {"check_statement": "ask > 0",
+                                "partition_clause": "ask IS NOT NULL"},
+                "bid_greater": {"check_statement": "bid > 0",
+                                "partition_clause": "bid IS NOT NULL"},
+                "ask_diff_bid": {"check_statement": "ask >= bid"}         
+                },
         )
 
         columns_checks_dl = SQLColumnCheckOperator(
@@ -77,9 +88,6 @@ with DAG(
             table = POSTGRES_TABLE,
             column_mapping = {
                 "ID": {"unique_check": {"equal_to": 0}, "null_check": {"equal_to": 0}},
-                "code": {"null_check": {"equal_to": 0}},
-                "create_date": {"null_check": {"equal_to": 0}},
-                
                 }
         )
 
@@ -131,12 +139,14 @@ with DAG(
             task_id = 'table_check_dw',
             table = POSTGRES_TABLE,
             checks = {
-                "code_diff_codein": {"check_statement": "code != codein"},
                 "row_count_check": {"check_statement": "COUNT(*) > 0"},
-                "high_diff_low": {"check_statement": "high >= low"},
-                "code_": {"check_statement": "COUNT(DISTINCT(code)) = 14"},
-                "codein_": {"check_statement": "COUNT(DISTINCT(codein)) = 2"},
-                "name_": {"check_statement": "COUNT(DISTINCT(name)) = 15"},
+                "code_distinct": {"check_statement": "COUNT(DISTINCT(code)) = 14",
+                                  "partition_clause": "code IS NOT NULL"},
+                "codein_distinct": {"check_statement": "COUNT(DISTINCT(codein)) = 2",
+                                    "partition_clause": "codein IS NOT NULL"},
+                "name_distinct": {"check_statement": "COUNT(DISTINCT(name)) = 15",
+                                  "partition_clause": "name IS NOT NULL"},
+                "code_diff_codein": {"check_statement": "code != codein"},
             },
         )
 
@@ -175,5 +185,9 @@ with DAG(
 # TODO: Criar insert.sql com os dados a serem inseridos ✅
 # TODO: Enviroment nomes de tabelas, conexões ✅
 # TODO: Transformando dados coletados ✅
-# TODO: Data Quality (Tabela e Colunas)
+# TODO: Data Quality (Tabela e Colunas) ask não pode ser menor que bid ✅
+# TODO: View Materializada por code
+# TODO: Média | Mediana ult. 5 dias
 # TODO: Criar script sql separando em arquivos csv por par de moeda
+
+

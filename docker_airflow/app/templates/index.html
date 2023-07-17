@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <h1>{{ title }}</h1>
+    <hr size="2", color="#", width="400", align="left">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="navbar-brand">HOME</a>
+        <a href="{{ url_for('home') }}" class="navbar-item">home</a>
+        <a href="{{ url_for('about') }}" class="navbar-item">about</a>
+    </div>
+    <div class="body-content">
+        {% block content %}
+        {{ content }}
+        {% endblock %}
+    </div>
+    {% for book in books %}
+        <div class='book'>
+            <h3>{{ book[1] }}-{{ book[2] }} - {{ book[10] }}</h3>
+            <i><p>({{ book[3] }})</p></i>
+            <p class='review'>High - {{ book[4] }}</p>
+            <p class='review'>Baixa - {{ book[5] }}</p>
+        </div>
+        
+</body>
+</html>
+    {% endfor %}
