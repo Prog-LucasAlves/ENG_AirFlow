@@ -76,16 +76,4 @@ services:
         mkdir -p /sources/logs /sources/dags /sources/plugins
         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
         exec /entrypoint airflow version
-  
-  app:
-    build:
-      context: ./
-    ports:
-      - 80:5000
-    depends_on:
-      - postgres
-    volumes:
-      - ./app:/app
-    env_file:
-      - .env
-  
+

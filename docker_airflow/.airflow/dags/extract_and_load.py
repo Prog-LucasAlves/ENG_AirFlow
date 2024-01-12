@@ -30,7 +30,7 @@ with DAG(
     catchup = False,
     template_searchpath = '/opt/airflow/sql',
     tags=["ETL"]
-    ) as dag:
+) as dag:
 
     coleta_dados = PythonOperator(
         task_id = 'coleta_dados',

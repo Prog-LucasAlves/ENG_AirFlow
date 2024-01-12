@@ -1,4 +1,4 @@
-tickers =[
+tickers = [
     'USD-BRL',
     'USD-BRLT',
     'CAD-BRL',
