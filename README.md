@@ -1,6 +1,6 @@
 # ![Projeto AirFlow](https://cdn-icons-png.flaticon.com/24/4907/4907848.png) Projeto AirFlow
 
-Coletando dados de uma API e fazendo a ingestão dos dados em um Banco de Dados.
+Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em um Banco de Dados.
 
 ![ ](https://github.com/Prog-LucasAlves/ENG-AirFlow/blob/main/image/Captura%20de%20tela%202023-02-13%20101542.png)
 
@@ -26,7 +26,7 @@ Coletando dados de uma API e fazendo a ingestão dos dados em um Banco de Dados.
 - [x] Salvando os dados no Datalake (Em Produção)
 - [x] Filtrando os dados salvos no Datalake (Em Produção)
 - [x] Salvando os dados no Datawarehouse (Em Produção)
-- [x] Conectando o PowerBI no Datawarehouse - Dashboard (Em Produção)
+- [ ] Conectando o PowerBI no Datawarehouse - Dashboard (Em Desenvolvimento)
 - [ ] Criando aplicação em flask com os dados (Em Desenvolvimento)
 
 ## ![CI](https://cdn-icons-png.flaticon.com/24/6577/6577286.png) Github
