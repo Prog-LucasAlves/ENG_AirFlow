@@ -18,5 +18,8 @@ jobs:
         - name: Install pytest
           run: pip install pytest
         
+        - name: List directory contents
+          run: ls -la
+        
         - name: Run tests
           run: pytest -v
