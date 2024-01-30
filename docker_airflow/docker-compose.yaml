@@ -34,6 +34,8 @@ services:
     volumes:
       - .postgres/database:/var/lib/postgresql/data
       - .postgres/transfer:/var/transfer:rw
+      - ./docker_postgres_init_dl.sql:/docker-entrypoint-initdb.d/docker_postgres_init_dl.sql
+      - ./docker_postgres_init_dw.sql:/docker-entrypoint-initdb.d/docker_postgres_init_dw.sql
     ports:
       - "5455:5432"
     healthcheck:
@@ -45,7 +47,6 @@ services:
 
   scheduler:
     <<: *common
-    <<: *depends-on
     container_name: airflow-scheduler
     command: scheduler
     restart: on-failure
@@ -54,7 +55,6 @@ services:
 
   webserver:
     <<: *common
-    <<: *depends-on
     container_name: airflow-webserver
     restart: always
     command: webserver
@@ -76,4 +76,17 @@ services:
         mkdir -p /sources/logs /sources/dags /sources/plugins
         chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
         exec /entrypoint airflow version
+
+  app:
+    restart: always
+    build:
+      context: ./
+    ports:
+      - 80:5000
+    depends_on:
+      - postgres
+    volumes:
+      - ./app:/app
+    env_file:
+      - .env
 
