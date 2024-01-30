@@ -14,7 +14,7 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 - *1. moedas_dl(DataLake) -> Schema(pares_moedas)*
 - *2. moedas_dw(DataWarehouse) -> Schema(pares_moedas)*
 
--Conexões usuários:
+- Conexões usuários:
 
 1. airflow(postgres-airflow_dl) -> Postegres(BD -> moedas_dl): user: etl_airflow_dl | password: *****
 2. airflow(postgres-airflow_dw) -> Postegres(BD -> moedas_dw): user: etl_airflow_dw | password: *****
@@ -35,11 +35,8 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 ![GitHub](https://img.shields.io/github/languages/top/Prog-LucasAlves/ENG-AirFlow)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Prog-LucasAlves/ENG-AirFlow)
 
-## ![P](https://cdn-icons-png.flaticon.com/24/8422/8422251.png) Pacotes Python utilizados
-
-[![Pandas](https://badge.fury.io/py/pandas.svg)](https://badge.fury.io/py/pandas)
-[![Airflow](https://badge.fury.io/py/apache-airflow.svg)](https://badge.fury.io/py/apache-airflow)
-
 ![progress](https://progress-bar.dev/60/?title=completed "progresso")
 
-ENG - Airflow
+------
+
+## Instalação e Configuração
