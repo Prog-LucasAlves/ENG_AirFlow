@@ -1,13 +1,13 @@
 from flask import Flask, render_template
 import psycopg2
 import os
-from datetime import datetime
 
 import dotenv
 
 dotenv.load_dotenv(dotenv.find_dotenv())
 
 app = Flask(__name__)
+
 
 def get_db_connection():
     con = psycopg2.connect(
@@ -18,6 +18,7 @@ def get_db_connection():
     )
 
     return con
+
 
 @app.route('/')
 def index():
@@ -33,21 +34,25 @@ def index():
         books=books
     )
 
+
+'''
 @app.route('/home')
 def home():
-    now =  datetime.now()
+    now = datetime.now()
     formatted_now = now.strftime("%A, %d %B, %Y at %X")
     return render_template(
         "index.html",
         content="l" + formatted_now
     )
 
+
 @app.route('/about')
 def about():
     return render_template(
         "index.html",
-        content='Lucas' 
+        content='Lucas'
     )
+'''
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
