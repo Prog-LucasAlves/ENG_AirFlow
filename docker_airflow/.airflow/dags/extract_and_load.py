@@ -24,36 +24,36 @@ with DAG(
         "depends_on_past": False,
         "up_for_retry": 2,
     },
-    description = 'DAG ETL',
-    start_date = datetime(2023, 1, 29),
-    schedule_interval = timedelta(minutes=5),
-    catchup = False,
-    template_searchpath = '/opt/airflow/sql',
+    description='DAG ETL',
+    start_date=datetime(2023, 1, 29),
+    schedule_interval=timedelta(minutes=5),
+    catchup=False,
+    template_searchpath='/opt/airflow/sql',
     tags=["ETL"]
 ) as dag:
 
     coleta_dados = PythonOperator(
-        task_id = 'coleta_dados',
-        python_callable = captura_dados
+        task_id='coleta_dados',
+        python_callable=captura_dados
     )
 
     transforma_dados = PythonOperator(
-        task_id = 'transforma_dados',
-        python_callable = transforma
+        task_id='transforma_dados',
+        python_callable=transforma
     )
 
     criar_tabela_dl = PostgresOperator(
-        task_id = 'cria_tabela_dl',
-        postgres_conn_id = POSTGRES_CONN_DL,
-        sql = 'cria_tabela_dl.sql',
-        params = {'table': POSTGRES_TABLE}
+        task_id='cria_tabela_dl',
+        postgres_conn_id=POSTGRES_CONN_DL,
+        sql='cria_tabela_dl.sql',
+        params={'table': POSTGRES_TABLE}
     )
 
     inseri_dados_tabela_dl = PostgresOperator(
-        task_id = 'insere_dados_dl',
-        postgres_conn_id = POSTGRES_CONN_DL,
-        sql = 'inseri_dados_tabela_dl.sql',
-        params = {'table': POSTGRES_TABLE,
+        task_id='insere_dados_dl',
+        postgres_conn_id=POSTGRES_CONN_DL,
+        sql='inseri_dados_tabela_dl.sql',
+        params={'table': POSTGRES_TABLE,
                 'path': PATH_DATA_DL}
     )
     with TaskGroup(group_id='check_dl', default_args={"conn_id": POSTGRES_CONN_DL}) as quality_check_dl:
