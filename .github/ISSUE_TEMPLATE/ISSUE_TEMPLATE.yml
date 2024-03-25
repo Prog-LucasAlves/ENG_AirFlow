@@ -1,0 +1,26 @@
+name: "📑Sugestão/Feedback"
+description: "Deixe seu comentário."
+title: "[Sugestão/Feedback]: Título"
+labels: ["UI"]
+assignees:
+  - shascher
+body:
+  - type: textarea
+    attributes:
+      label: "📝Comentário"
+      description: "Deixe sua sugestão/feedback sobre o projeto."
+      placeholder: "Texto."
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: "🏆Avaliação"
+      description: Qual a sua avaliação sobre o projeto?
+      multiple: false
+      options:
+        - 🥇Ótimo
+        - 🥈Bom
+        - 🥉Regular
+        - 🏅Ruim  
+    validations:
+      required: true
