@@ -2,29 +2,33 @@ import requests
 import json
 import pandas as pd
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime
 import scripts.list_tikers as tk
 
 MOEDAS = tk.tickers
-#MOEDAS = list_tikers.tickers
+# MOEDAS = list_tikers.tickers
+
 
 def captura_dados() -> list:
+    """
+    Função que coleta os dados dos pares de moedas e salva os dados em um arquivo csv.
+    """
 
-    result_code : list = []
-    result_codein : list = []
-    result_name : list = []
-    result_high : list = []
-    result_low : list = []
-    result_varBid : list = []
-    result_pctChange : list = []
-    result_bid : list = []
-    result_ask : list = []
-    
+    result_code: list = []
+    result_codein: list = []
+    result_name: list = []
+    result_high: list = []
+    result_low: list = []
+    result_varBid: list = []
+    result_pctChange: list = []
+    result_bid: list = []
+    result_ask: list = []
+
     dadosColetados = pd.DataFrame()
 
     for ticker in MOEDAS:
 
-        header = {'user-agent':'Mozilla/5.0'}
+        header = {'user-agent': 'Mozilla/5.0'}
         url = f'http://economia.awesomeapi.com.br/json/last/{ticker}'
         site = requests.get(url, headers=header)
         dados = json.loads(site.text)
@@ -50,7 +54,7 @@ def captura_dados() -> list:
         result_bid.append(bid)
         result_ask.append(ask)
         create_date = datetime.now()
-    
+
     dadosColetados['code'] = result_code
     dadosColetados['codein'] = result_codein
     dadosColetados['name'] = result_name
@@ -62,6 +66,7 @@ def captura_dados() -> list:
     dadosColetados['ask'] = result_ask
     dadosColetados['create_date'] = create_date
     dadosColetados.to_csv('/var/transfer/dadosColetados.csv', index=False)
+
 
 if __name__ == '__main__':
     captura_dados()
