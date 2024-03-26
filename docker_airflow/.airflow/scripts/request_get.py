@@ -28,21 +28,21 @@ def captura_dados() -> list:
 
     for ticker in MOEDAS:
 
-        header = {'user-agent': 'Mozilla/5.0'}
-        url = f'http://economia.awesomeapi.com.br/json/last/{ticker}'
+        header = {"user-agent": "Mozilla/5.0"}
+        url = f"http://economia.awesomeapi.com.br/json/last/{ticker}"
         site = requests.get(url, headers=header)
         dados = json.loads(site.text)
 
-        ticker = ticker.replace('-', '')
-        code = dados[ticker]['code']
-        codein = dados[ticker]['codein']
-        name = dados[ticker]['name']
-        high = dados[ticker]['high']
-        low = dados[ticker]['low']
-        varBid = dados[ticker]['varBid']
-        pctChange = dados[ticker]['pctChange']
-        bid = dados[ticker]['bid']
-        ask = dados[ticker]['ask']
+        ticker = ticker.replace("-", "")
+        code = dados[ticker]["code"]
+        codein = dados[ticker]["codein"]
+        name = dados[ticker]["name"]
+        high = dados[ticker]["high"]
+        low = dados[ticker]["low"]
+        varBid = dados[ticker]["varBid"]
+        pctChange = dados[ticker]["pctChange"]
+        bid = dados[ticker]["bid"]
+        ask = dados[ticker]["ask"]
 
         result_code.append(code)
         result_codein.append(codein)
@@ -55,18 +55,18 @@ def captura_dados() -> list:
         result_ask.append(ask)
         create_date = datetime.now()
 
-    dadosColetados['code'] = result_code
-    dadosColetados['codein'] = result_codein
-    dadosColetados['name'] = result_name
-    dadosColetados['high'] = result_high
-    dadosColetados['low'] = result_low
-    dadosColetados['varBid'] = result_varBid
-    dadosColetados['pctChange'] = result_pctChange
-    dadosColetados['bid'] = result_bid
-    dadosColetados['ask'] = result_ask
-    dadosColetados['create_date'] = create_date
-    dadosColetados.to_csv('/var/transfer/dadosColetados.csv', index=False)
+    dadosColetados["code"] = result_code
+    dadosColetados["codein"] = result_codein
+    dadosColetados["name"] = result_name
+    dadosColetados["high"] = result_high
+    dadosColetados["low"] = result_low
+    dadosColetados["varBid"] = result_varBid
+    dadosColetados["pctChange"] = result_pctChange
+    dadosColetados["bid"] = result_bid
+    dadosColetados["ask"] = result_ask
+    dadosColetados["create_date"] = create_date
+    dadosColetados.to_csv("/var/transfer/dadosColetados.csv", index=False)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     captura_dados()
