@@ -38,3 +38,8 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 ![progress](https://progress-bar.dev/60/?title=completed "progresso")
 
 ## Instalação e Configuração
+
+1. Clone o repositório:
+´´
+git clone https://github.com/Prog-LucasAlves/ENG-AirFlow.git
+´´
