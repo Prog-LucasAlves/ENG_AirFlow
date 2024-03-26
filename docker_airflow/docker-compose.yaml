@@ -3,7 +3,7 @@ version: '3.4'
 
 x-common:
   &common
-  image: apache/airflow:2.5.1
+  image: apache/airflow:2.8.3
   user: "${AIRFLOW_UID}:0"
   env_file: 
     - .env
