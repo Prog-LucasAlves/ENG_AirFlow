@@ -5,7 +5,7 @@ x-common:
   &common
   image: apache/airflow:2.8.3
   user: "${AIRFLOW_UID}:0"
-  env_file: 
+  env_file:
     - .env
   volumes:
     - .airflow/dags:/opt/airflow/dags
@@ -65,7 +65,7 @@ services:
       interval: 30s
       timeout: 30s
       retries: 5
-  
+
   airflow-init:
     <<: *common
     container_name: airflow-init
@@ -89,4 +89,3 @@ services:
       - ./app:/app
     env_file:
       - .env
-

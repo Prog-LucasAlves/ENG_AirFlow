@@ -11,31 +11,27 @@ app = Flask(__name__)
 
 def get_db_connection():
     con = psycopg2.connect(
-        user=os.getenv('POSTGRES_USER'),
-        password=os.getenv('POSTGRES_PASSWORD'),
-        database=os.getenv('POSTGRES_DB'),
-        host=os.getenv('HOST_DB')
+        user=os.getenv("POSTGRES_USER"),
+        password=os.getenv("POSTGRES_PASSWORD"),
+        database=os.getenv("POSTGRES_DB"),
+        host=os.getenv("HOST_DB"),
     )
 
     return con
 
 
-@app.route('/')
+@app.route("/")
 def index():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM pares_moedas;')
+    cur.execute("SELECT * FROM pares_moedas;")
     books = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template(
-        "index.html",
-        title="Pares de Moedas",
-        books=books
-    )
+    return render_template("index.html", title="Pares de Moedas", books=books)
 
 
-'''
+"""
 @app.route('/home')
 def home():
     now = datetime.now()
@@ -52,7 +48,7 @@ def about():
         "index.html",
         content='Lucas'
     )
-'''
+"""
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0")
