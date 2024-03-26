@@ -39,7 +39,15 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 
 ## Instalação e Configuração
 
-1. Clone o repositório:
-´´
+1. Criando o diretório do projeto
+
+```bash
+mkdir ENG-AirFlow
+cd ENG-AirFlow
+```
+
+2. Clone o repositório:
+
+```bash
 git clone https://github.com/Prog-LucasAlves/ENG-AirFlow.git
-´´
+```
