@@ -7,14 +7,14 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 ## ![Informações do Projeto](https://cdn-icons-png.flaticon.com/24/8365/8365039.png) Informações do Projeto
 
 1. API Utilizada: *[API](https://docs.awesomeapi.com.br/api-de-moedas)*
-2. Banco de Dados*: **Postgres 13** (Via Docker - postgres:13)
-3. Airflow: **Airflow 2.5.1** (Via Docker - apache/airflow:2.5.1)
+2. Banco de Dados*: **PostgreSQL 13** (Via Docker - postgres:13)
+3. Airflow: **Airflow 2.8.3** (Via Docker - apache/airflow:2.8.3)
 
 - **Foi Criado dois banco de dados*
-- *1. moedas_dl(DataLake) -> Schema(pares_moedas)*
-- *2. moedas_dw(DataWarehouse) -> Schema(pares_moedas)*
+- *1. moedas_dl(DataLake) -> Schema(moedas)*
+- *2. moedas_dw(DataWarehouse) -> Schema(moedas)*
 
-- Conexões usuários:
+- Conexões aos banco de dados:
 
 1. airflow(postgres-airflow_dl) -> Postegres(BD -> moedas_dl): user: etl_airflow_dl | password: *****
 2. airflow(postgres-airflow_dw) -> Postegres(BD -> moedas_dw): user: etl_airflow_dw | password: *****
@@ -36,7 +36,5 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Prog-LucasAlves/ENG-AirFlow)
 
 ![progress](https://progress-bar.dev/60/?title=completed "progresso")
-
-------
 
 ## Instalação e Configuração
