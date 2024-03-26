@@ -1,15 +1,19 @@
 import pandas as pd
 
-def transforma ():
+
+def transforma():
+    """
+    Função para transformar os dados coletados em um arquivo .csv
+    """
     # Carregando os dados coletados
     data = pd.read_csv('/var/transfer/dadosColetados.csv')
-    
+
     # Colocando os dados da coluna 'name' em maiúsculo
     data['name'] = data['name'].str.upper()
 
     # Arredondando os dados da coluna 'high' para 3 casas decimais
     data['high'] = round(data['high'], 3)
-    
+
     # Arredondando os dados da coluna 'low' para 3 casas decimais
     data['low'] = round(data['low'], 3)
 
@@ -30,6 +34,7 @@ def transforma ():
 
     # Salvando os dados
     data.to_csv('/var/transfer/dadosColetadosT.csv', index=False)
+
 
 if __name__ == '__main__':
     transforma()
