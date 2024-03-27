@@ -37,6 +37,15 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 
 ![progress](https://progress-bar.dev/60/?title=completed "progresso")
 
+## ![IESS](https://cdn-icons-png.flaticon.com/24/5109/5109476.png) Itens Essenciais
+
+## Pré-requisitos
+
+- **VSCode**: É o editor de código que irei utilizar [Instruções aqui](https://code.visualstudio.com/download)
+- **Pyenv**: É usado para gerenciar versões do Python. [Instruções de instalação do Pyenv aqui](https://github.com/pyenv/pyenv#installation). Vamos usar nesse projeto o Python 3.11.3. Para usuários Windows, é recomendado assistirem esse tutorial [Youtube](https://www.youtube.com/watch?v=TkcqjLu1dgA).
+- **Poetry**: Este projeto utiliza Poetry para gerenciamento de dependências. [Instruções de instalação do Poetry aqui](https://python-poetry.org/docs/#installing-with-pipx).
+- **Docker**: O Docker é uma plataforma open source que facilita a criação e administração de ambientes isolados. Iremos utilizar o Docker para implantação do AirFlow e do PostgreSQL.[Intruções sobre o Docker Desktop aqui](https://www.docker.com/products/docker-desktop/)
+
 ## ![CONFIG](https://cdn-icons-png.flaticon.com/24/4149/4149678.png) Instalação e Configuração
 
 1. Criando o diretório do projeto
@@ -53,8 +62,6 @@ git clone https://github.com/Prog-LucasAlves/ENG-AirFlow.git
 ```
 
 3. Configurar a versão do Python com ``pyenv``:
-
-- Pyenv: É usado para gerenciar versões do Python. [Instruções de instalação do Pyenv aqui](https://github.com/pyenv/pyenv#installation). Vamos usar nesse projeto o Python 3.11.3. Para usuários Windows, é recomendado assistirem esse tutorial [Youtube](https://www.youtube.com/watch?v=TkcqjLu1dgA).
 
 ```bash
 
