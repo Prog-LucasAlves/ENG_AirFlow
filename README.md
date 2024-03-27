@@ -37,7 +37,7 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 
 ![progress](https://progress-bar.dev/60/?title=completed "progresso")
 
-## Instalação e Configuração
+## ![CONFIG](https://cdn-icons-png.flaticon.com/24/4149/4149678.png) Instalação e Configuração
 
 1. Criando o diretório do projeto
 
@@ -50,4 +50,12 @@ cd ENG-AirFlow
 
 ```bash
 git clone https://github.com/Prog-LucasAlves/ENG-AirFlow.git
+```
+
+3. Configurar a versão do Python com ``pyenv``:
+
+- Pyenv: É usado para gerenciar versões do Python. [Instruções de instalação do Pyenv aqui](https://github.com/pyenv/pyenv#installation). Vamos usar nesse projeto o Python 3.11.3. Para usuários Windows, é recomendado assistirem esse tutorial [Youtube](https://www.youtube.com/watch?v=TkcqjLu1dgA).
+
+```bash
+
 ```
