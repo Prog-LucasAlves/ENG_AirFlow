@@ -29,14 +29,6 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 - [ ] Conectando o PowerBI no Datawarehouse - Dashboard (Em Desenvolvimento)
 - [ ] Criando aplicação em flask com os dados (Em Desenvolvimento)
 
-## ![CI](https://cdn-icons-png.flaticon.com/24/6577/6577286.png) Github
-
-![GitHub](https://img.shields.io/github/license/Prog-LucasAlves/ENG-Airflow)
-![GitHub](https://img.shields.io/github/languages/top/Prog-LucasAlves/ENG-AirFlow)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Prog-LucasAlves/ENG-AirFlow)
-
-![progress](https://progress-bar.dev/60/?title=completed "progresso")
-
 ## ![IESS](https://cdn-icons-png.flaticon.com/24/5109/5109476.png) Itens Essenciais
 
 ## Pré-requisitos
@@ -91,3 +83,11 @@ docker-compose up -d
 
 - **ISSUES** [AQUI](https://github.com/Prog-LucasAlves/ENG-AirFlow/issues/new/choose)
 - **LinkedIn** [AQUI](https://www.linkedin.com/in/lucasalves-ast/)
+
+## ![CI](https://cdn-icons-png.flaticon.com/24/6577/6577286.png) Github
+
+![GitHub](https://img.shields.io/github/license/Prog-LucasAlves/ENG-Airflow)
+![GitHub](https://img.shields.io/github/languages/top/Prog-LucasAlves/ENG-AirFlow)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Prog-LucasAlves/ENG-AirFlow)
+
+![progress](https://progress-bar.dev/60/?title=completed "progresso")
