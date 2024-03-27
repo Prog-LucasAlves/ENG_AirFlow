@@ -41,10 +41,10 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 
 ## Pré-requisitos
 
-- **VSCode**: É o editor de código que irei utilizar [Instruções aqui](https://code.visualstudio.com/download)
+- **VSCode**: É o editor de código que irei utilizar [Instruções aqui](https://code.visualstudio.com/download).
 - **Pyenv**: É usado para gerenciar versões do Python. [Instruções de instalação do Pyenv aqui](https://github.com/pyenv/pyenv#installation). Vamos usar nesse projeto o Python 3.11.3. Para usuários Windows, é recomendado assistirem esse tutorial [Youtube](https://www.youtube.com/watch?v=TkcqjLu1dgA).
 - **Poetry**: Este projeto utiliza Poetry para gerenciamento de dependências. [Instruções de instalação do Poetry aqui](https://python-poetry.org/docs/#installing-with-pipx).
-- **Docker**: O Docker é uma plataforma open source que facilita a criação e administração de ambientes isolados. Iremos utilizar o Docker para implantação do AirFlow e do PostgreSQL.[Intruções sobre o Docker Desktop aqui](https://www.docker.com/products/docker-desktop/)
+- **Docker**: O Docker é uma plataforma open source que facilita a criação e administração de ambientes isolados. Iremos utilizar o Docker para implantação do AirFlow e do PostgreSQL. [Intruções sobre o Docker Desktop aqui](https://www.docker.com/products/docker-desktop/).
 
 ## ![CONFIG](https://cdn-icons-png.flaticon.com/24/4149/4149678.png) Instalação e Configuração
 
@@ -64,5 +64,30 @@ git clone https://github.com/Prog-LucasAlves/ENG-AirFlow.git
 3. Configurar a versão do Python com ``pyenv``:
 
 ```bash
-
+pyenv install 3.11.3
+pyenv local 3.11.3
 ```
+
+4. Configurar o poetry:
+
+```bash
+poetry init
+poetry shell
+```
+
+5. Instalando as dependências do projeto:
+
+```bash
+poetry install
+```
+
+6. Executando Docker
+
+```bash
+docker-compose up -d
+```
+
+## ![CONT](https://cdn-icons-png.flaticon.com/24/6008/6008922.png) Contato
+
+- **ISSUES** [AQUI](https://github.com/Prog-LucasAlves/ENG-AirFlow/issues/new/choose)
+- **LinkedIn** [AQUI](https://www.linkedin.com/in/lucasalves-ast/)
