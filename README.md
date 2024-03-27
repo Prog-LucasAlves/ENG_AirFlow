@@ -83,7 +83,7 @@ docker-compose up -d
 
 - **ISSUES** [AQUI](https://github.com/Prog-LucasAlves/ENG-AirFlow/issues/new/choose)
 - **LinkedIn** [AQUI](https://www.linkedin.com/in/lucasalves-ast/)
-  
+
 ## ![CI](https://cdn-icons-png.flaticon.com/24/6577/6577286.png) Github
 
 ![GitHub](https://img.shields.io/github/license/Prog-LucasAlves/ENG-Airflow)
