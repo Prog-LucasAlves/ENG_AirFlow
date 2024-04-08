@@ -11,9 +11,9 @@ app = Flask(__name__)
 
 def get_db_connection():
     con = psycopg2.connect(
-        user=os.getenv("POSTGRES_USER"),
-        password=os.getenv("POSTGRES_PASSWORD"),
-        database=os.getenv("POSTGRES_DB"),
+        user=os.getenv("POSTGRES_USER_APP"),
+        password=os.getenv("POSTGRES_PASSWORD_APP"),
+        database=os.getenv("POSTGRES_DB_APP"),
         host=os.getenv("HOST_DB"),
     )
 
@@ -24,7 +24,7 @@ def get_db_connection():
 def index():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM pares_moedas;")
+    cur.execute("SELECT * FROM moedas;")
     books = cur.fetchall()
     cur.close()
     conn.close()
