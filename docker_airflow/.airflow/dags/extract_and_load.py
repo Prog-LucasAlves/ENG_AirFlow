@@ -63,7 +63,25 @@ with DAG(
         table_checks_dl = SQLTableCheckOperator(
             task_id="table_checks_dl",
             table=POSTGRES_TABLE,
-            checks={"row_count_check": {"check_statement": "COUNT(*) > 0"}},
+            checks={
+                    "row_count_check": {"check_statement": "COUNT(*) > 0"},
+                "code_distinct": {"check_statement": "COUNT(DISTINCT(code)) = 14",
+                                  "partition_clause": "code IS NOT NULL"},
+                "codein_distinct": {"check_statement": "COUNT(DISTINCT(codein)) = 2",
+                                    "partition_clause": "codein IS NOT NULL"},
+                "name_distinct": {"check_statement": "COUNT(DISTINCT(name)) = 15",
+                                  "partition_clause": "name IS NOT NULL"},
+                "code_diff_codein": {"check_statement": "code != codein"},
+                "high_greater": {"check_statement": "high > 0",
+                                 "partition_clause": "high IS NOT NULL"},
+                "low_greater": {"check_statement": "low > 0",
+                                "partition_clause": "low IS NOT NULL"},
+                "high_diff_low": {"check_statement": "high >= low"},
+                "ask_greater": {"check_statement": "ask > 0",
+                                "partition_clause": "ask IS NOT NULL"},
+                "bid_greater": {"check_statement": "bid > 0",
+                                "partition_clause": "bid IS NOT NULL"},
+                "ask_diff_bid": {"check_statement": "ask >= bid"}},
         )
 
         columns_checks_dl = SQLColumnCheckOperator(
