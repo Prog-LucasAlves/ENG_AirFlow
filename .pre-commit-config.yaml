@@ -5,13 +5,6 @@ repos:
         - id: commitizen
           stages: [commit-msg]
 
-  -   repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.6.0
-      hooks:
-      -   id: check-yaml
-      -   id: end-of-file-fixer
-      -   id: trailing-whitespace
-
   -   repo: https://github.com/hhatto/autopep8
       rev: v2.1.0
       hooks:
