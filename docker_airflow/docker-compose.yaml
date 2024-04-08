@@ -84,7 +84,8 @@ services:
     ports:
       - 80:5000
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     volumes:
       - ./app:/app
     env_file:
