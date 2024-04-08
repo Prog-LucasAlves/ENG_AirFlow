@@ -12,10 +12,10 @@ def transforma():
     data["name"] = data["name"].str.upper()
 
     # Arredondando os dados da coluna 'high' para 3 casas decimais
-    data["high"] = round(data["high"], 3)
+    data["high"] = round(data["high"], 2)
 
     # Arredondando os dados da coluna 'low' para 3 casas decimais
-    data["low"] = round(data["low"], 3)
+    data["low"] = round(data["low"], 2)
 
     # Arredondando os dados da coluna 'varBid' para 3 casas decimais
     data["varBid"] = round(data["varBid"], 3)
