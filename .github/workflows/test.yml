@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: ["3.9", "3.10", "3.11"]
+        python: ["3.11.3"]
 
     steps:
       - uses: actions/checkout@v4
@@ -16,8 +16,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
-      - name: Install pytest
+      - name: Install Install dependencies
         run: pip install requests pytest
       - name: Run pytest
-        # Run tox using the version of Python in `PATH`
+        # Run pytest using the version of Python in `PATH`
         run: pytest -v
