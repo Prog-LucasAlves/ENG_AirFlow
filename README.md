@@ -26,7 +26,6 @@ Coletando dados de uma API(Pares de Moedas) e fazendo a ingestão dos dados em u
 - [x] Salvando os dados no Datalake (Em Produção)
 - [x] Filtrando os dados salvos no Datalake (Em Produção)
 - [x] Salvando os dados no Datawarehouse (Em Produção)
-- [ ] Conectando o PowerBI no Datawarehouse - Dashboard (Em Desenvolvimento)
 - [ ] Criando aplicação em flask com os dados (Em Desenvolvimento)
 
 ## ![IESS](https://cdn-icons-png.flaticon.com/24/5109/5109476.png) Itens Essenciais
